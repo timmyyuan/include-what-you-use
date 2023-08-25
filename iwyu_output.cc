@@ -113,7 +113,7 @@ string OutputLine::printable_line(size_t min_length, size_t max_length) const {
   string result = line_;
   for (string symbol : symbols_) {
     // At verbose levels 0-2, truncate output to max_length columns.
-    if (!ShouldPrint(3)) {
+    if (!ShouldPrint(0)) {
       // Calculate number of chars remaining.
       size_t remaining = 0;
       size_t result_length = result.length() + symbol_prefix.length();
@@ -2013,7 +2013,6 @@ size_t PrintableDiffs(const string& filename,
   }
   if (no_adds_or_deletes && !GlobalFlags().update_comments) {
     output = "\n(" + filename + " has correct #includes/fwd-decls)\n";
-    return 0;
   }
 
   size_t num_edits = 0;
